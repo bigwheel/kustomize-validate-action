@@ -11,6 +11,11 @@ jobs:
       with:
         path: test/valueAddExample/all
     - name: Test with a invalid yamls
+      id: invalid_yamls_test
       uses: bigwheel/kustomize-validate-action@main
       with:
         path: test/
+      continue-on-error: true
+    - name: Invalid yamls test result check
+      if: ${{ steps.invalid_yamls_test.outcome }} != 'failure'
+      run: exit 1
