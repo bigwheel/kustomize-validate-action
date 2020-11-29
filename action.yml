@@ -1,10 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone'
+name: 'Kustomize Validate'
+description: 'Validate Kustomize yaml files by `kustomize build` command.'
 inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
     default: 'World'
+  path:
+    description: path of kustomize build target directory
+    required: true
 outputs:
   random-number:
     description: "Random number"
@@ -14,7 +17,7 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: kustomize build test/valueAddExample/all
+    - run: kustomize build ${{ inputs.path }}
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"
