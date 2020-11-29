@@ -18,9 +18,5 @@ runs:
         fi
       shell: bash
     - run: kustomize build '${{ inputs.path }}'
-      shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
+      # ↑ no need to add current directory prefix because it can be specify by working-directory parameter
       shell: bash
