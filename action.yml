@@ -11,7 +11,11 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: test -n '${{ inputs.path }}'
+    - run: |
+        if [[ -z '${{ inputs.path }}' ]]; then
+          echo 'Specify input "path".'
+          exit 1
+        fi
       shell: bash
     - run: kustomize build ${{ inputs.path }}
       shell: bash
