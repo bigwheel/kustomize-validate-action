@@ -6,7 +6,11 @@ jobs:
     name: Action test
     steps:
     - uses: actions/checkout@v2
-    - id: foo
+    - name: Test with a valid yamls
       uses: bigwheel/kustomize-validate-action@main
       with:
         path: test/valueAddExample/all
+    - name: Test with a invalid yamls
+      uses: bigwheel/kustomize-validate-action@main
+      with:
+        path: test/
