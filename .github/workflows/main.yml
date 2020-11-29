@@ -17,5 +17,5 @@ jobs:
         path: test/
       continue-on-error: true
     - name: Invalid yamls test result check
-      if: ${{ steps.invalid_yamls_test.outcome }} != 'failure'
+      if: steps.invalid_yamls_test.outcome != 'failure'
       run: echo ${{ steps.invalid_yamls_test.outcome }} && exit 1
