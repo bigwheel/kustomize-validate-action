@@ -11,6 +11,8 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - run: test -n '${{ inputs.path }}'
+      shell: bash
     - run: kustomize build ${{ inputs.path }}
       shell: bash
     - id: random-number-generator
