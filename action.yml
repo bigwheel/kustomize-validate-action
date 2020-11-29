@@ -11,6 +11,8 @@ outputs:
 runs:
   using: "composite"
   steps:
+    # ↓ path input is required. But action is executed even no specify case.
+    #    Then I added this manual input check step.
     - run: |
         if [[ -z '${{ inputs.path }}' ]]; then
           echo 'Specify input "path".'
