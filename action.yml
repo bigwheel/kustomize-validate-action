@@ -17,7 +17,7 @@ runs:
           exit 1
         fi
       shell: bash
-    - run: kustomize build ${{ inputs.path }}
+    - run: kustomize build '${{ inputs.path }}'
       shell: bash
     - id: random-number-generator
       run: echo "::set-output name=random-id::$(echo $RANDOM)"

@@ -8,5 +8,7 @@ jobs:
     - uses: actions/checkout@v2
     - id: foo
       uses: bigwheel/kustomize-validate-action@main
+      with:
+        path: test/valueAddExample/all
     - run: echo random-number ${{ steps.foo.outputs.random-number }}
       shell: bash
